@@ -1,3 +1,5 @@
+
+
 const posts = [
     {
         "id": 1,
@@ -88,18 +90,83 @@ for(let i = 0; i < posts.length; i++){
                         '<a class="like-button  js-like-button" href="#" data-postid="'+ posts[i].id + '">'+
                             '<i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>'+
                              
-                            '<span class="like-button__label">Mi Piace</span>'+
+                            '<span  class="like-button__label  ">Mi Piace</span>'+
                     
                         '</a>'+
                 
                     '</div>'+
                     '<div class="likes__counter">'+
-                        'Piace a ' + '<b id="like-counter-1" class="js-likes-counter">' + posts[i].likes + '</b>'+ ' persone'+
+                        'Piace a ' + '<b id="like-counter-1"  class="js-likes-counter ">' + posts[i].likes + '</b>'+ ' persone'+
                     '</div>'+
             
                 '</div>'+
                 
             '</div>' +
-        '</div>'
+        '</div>';
+
+
+
+    
+
+
 
 }
+
+let myButton = document.querySelectorAll('.like-button__label')
+
+let nLike = document.querySelectorAll('.js-likes-counter')
+
+console.log('button', myButton)
+
+console.log( 'like', posts[0].likes, typeof(posts[0].likes))
+
+
+const postPiaciuti = []
+
+console.log('post-piaciuti', postPiaciuti)
+
+
+for(let c = 0; c < myButton.length; c++){
+    console.log(myButton[c])
+
+    let counter = 0;
+
+
+
+    myButton[c].addEventListener('click', function(){
+        counter ++;
+        console.log(counter)
+        if ((counter % 2 == 0) == false) {
+            myButton[c].classList.add('button-clicked')
+
+
+            postPiaciuti.push(posts[c].id)
+
+
+        }
+        else {
+            myButton[c].classList.remove('button-clicked')
+
+            
+        }
+    
+    
+    
+    });
+
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
