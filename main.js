@@ -96,7 +96,7 @@ for(let i = 0; i < posts.length; i++){
                 
                     '</div>'+
                     '<div class="likes__counter">'+
-                        'Piace a ' + '<b id="like-counter-1"  class="js-likes-counter ">' + posts[i].likes + '</b>'+ ' persone'+
+                        'Piace a ' + '<b id="like-counter-' + posts[i].id + '"  class="js-likes-counter ">' + posts[i].likes + '</b>'+ ' persone'+
                     '</div>'+
             
                 '</div>'+
@@ -114,7 +114,7 @@ for(let i = 0; i < posts.length; i++){
 
 let myButton = document.querySelectorAll('.like-button__label')
 
-let nLike = document.querySelectorAll('.js-likes-counter')
+
 
 console.log('button', myButton)
 
@@ -131,14 +131,28 @@ for(let c = 0; c < myButton.length; c++){
 
     let counter = 0;
 
+    let nLike = document.getElementById('like-counter-' + posts[c].id)
 
 
-    myButton[c].addEventListener('click', function(){
+    console.log(posts[c].likes)
+
+    
+
+    
+
+    myButton[c].addEventListener('click', function(event){
         counter ++;
+
+        
+
+        event.preventDefault()
         console.log(counter)
         if ((counter % 2 == 0) == false) {
             myButton[c].classList.add('button-clicked')
 
+            nLike.innerHTML = posts[c].likes + 1 ;
+            
+            
 
             postPiaciuti.push(posts[c].id)
 
@@ -146,6 +160,8 @@ for(let c = 0; c < myButton.length; c++){
         }
         else {
             myButton[c].classList.remove('button-clicked')
+
+            nLike.innerHTML = posts[c].likes  ;
 
             
         }
